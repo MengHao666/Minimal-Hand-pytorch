@@ -59,7 +59,7 @@ def main(args):
         opt_bone_lens = np.array(opt_bone_lens).reshape(-1, 15)
         pre_useful_bone_lens = np.array(pre_useful_bone_lens).reshape(-1, 15)
 
-        np.save("{}/{}_test_shapes_r{}.npy".format(path, dataset, args.weight), opt_shapes)
+        np.save("{}/{}_shapes.npy".format(path, dataset, args.weight), opt_shapes)
 
         error = align_bone_len(opt_bone_lens, pre_useful_bone_lens)
 

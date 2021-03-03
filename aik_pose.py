@@ -1,17 +1,16 @@
+import argparse
+
 import numpy as np
 import torch
 from manopth import demo
 from manopth import manolayer
 from tqdm import tqdm
 
-from utils import  AIK, align, vis
+from utils import AIK, align, vis
 from utils.eval.zimeval import EvalUtil
-import argparse
 
 
 def recon_eval(op_shapes, pre_j3ds, gt_j3ds, visual, key):
-    
-
     pose0 = torch.eye(3).repeat(1, 16, 1, 1).cuda()
     mano = manolayer.ManoLayer(flat_hand_mean=True,
                                side="right",
@@ -29,24 +28,7 @@ def recon_eval(op_shapes, pre_j3ds, gt_j3ds, visual, key):
         _, j3d_p0_ops = mano(pose0, op_shape)
         template = j3d_p0_ops.cpu().numpy().squeeze() / 1000.0  # template, m
 
-        # process prediction , scale it to template
-        # bl_pre = bone.caculate_length(j3d_pre, label="useful")
-        # rbl_pre = bl_pre[6]
-        #
-        # bl_template = bone.caculate_length(template, label="useful")  # template, m
-        # rbl_template = bl_template[6]  # reference bone
-        # # print("bl_template=", bl_template)
-        # ratio = rbl_template / rbl_pre
-        # print(ratio)
-
-        # a=np.linalg.norm(template[9]-template[0])
-        # b=np.linalg.norm(j3d_pre[9]-j3d_pre[0])
-        # print(a,b)
-        ratio = np.linalg.norm(template[9]-template[0]) / np.linalg.norm(j3d_pre[9]-j3d_pre[0])
-        # print(ratio)
-
-
-
+        ratio = np.linalg.norm(template[9] - template[0]) / np.linalg.norm(j3d_pre[9] - j3d_pre[0])
         j3d_pre_process = j3d_pre * ratio  # template, m
         j3d_pre_process = j3d_pre_process - j3d_pre_process[0] + template[0]
 
@@ -69,7 +51,7 @@ def recon_eval(op_shapes, pre_j3ds, gt_j3ds, visual, key):
 
         # visualization
         if visual:
-            vis.multi_plot3d([j3d_recon, j3d_pre_process],title=["recon"])
+            vis.multi_plot3d([j3d_recon, j3d_pre_process], title=["recon"])
     j3d_recons = np.array(j3d_recons)
     gt_joint, j3d_recon_align_gt = align.global_align(gt_j3ds, j3d_recons, key=key)
 
@@ -88,13 +70,12 @@ def recon_eval(op_shapes, pre_j3ds, gt_j3ds, visual, key):
 
 
 def main(args):
-
-    path=args.path
+    path = args.path
     for key_i in args.dataset:
         print("load {}'s joint 3D".format(key_i))
-        op_shapes = np.load("{}/{}_shapes.npy".format(path,key_i))
-        pre_j3ds = np.load("{}/{}_pre_joints.npy".format(path,key_i))
-        gt_j3ds = np.load("{}/{}_gt_joints.npy".format(path,key_i), allow_pickle=True)
+        op_shapes = np.load("{}/{}_shapes.npy".format(path, key_i))
+        pre_j3ds = np.load("{}/{}_pre_joints.npy".format(path, key_i))
+        gt_j3ds = np.load("{}/{}_gt_joints.npy".format(path, key_i), allow_pickle=True)
         recon_eval(op_shapes, pre_j3ds, gt_j3ds, args.visualize, key_i)
 
 
@@ -127,6 +108,5 @@ if __name__ == '__main__':
         help='visualize reconstruction result',
         default=False
     )
-
 
     main(parser.parse_args())
