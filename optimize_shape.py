@@ -25,8 +25,8 @@ def main(args):
     path=args.path
     for dataset in args.dataset:
         # load predictions (N*21*3)
+        print("load {}'s joint 3D".format(dataset))
         pred_j3d = np.load("{}/{}_pre_joints.npy".format(path, dataset),allow_pickle=True)
-        # print("pred_j3d.shape=", pred_j3d.shape)
 
         opt_shapes = []
         opt_bone_lens = []
@@ -38,7 +38,6 @@ def main(args):
             pose, shape = func.initiate("zero")
 
             pre_useful_bone_len = bone.caculate_length(pred, label="useful")
-            # print("pre_useful_bone_len.shape=", pre_useful_bone_len.shape)
             pre_useful_bone_lens.append(pre_useful_bone_len)
 
             # optimize here!
@@ -75,10 +74,6 @@ if __name__ == '__main__':
         '-ds',
         "--dataset",
         nargs="+",
-        # default=['rhd'],
-        # default=['stb'],
-        # default=['do'],
-        # default=['eo'],
         default=['rhd', 'stb', 'do', 'eo'],
         type=str,
         help="sub datasets, should be listed in: [stb|rhd|do|eo]"
