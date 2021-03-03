@@ -66,10 +66,7 @@ Minimal-Hand-pytorch/
   EO_supp: [Google Drive](https://drive.google.com/file/d/1WRHVTp7ZmryE41xN2Yhp-qet0ddeOim4/view?usp=sharing) or 
   [Baidu Pan](https://pan.baidu.com/s/1sK4Nfvs6og-eXJGwDQCHlQ) (`axkm`)
 
-### Note
-* **All code and data from these download falls under their own licenses.**
 
-* `DO_supp` and `EO_supp` are modified from original ones.
 
 ### Processing
 - Create a data directory, extract all above datasets or additional materials in it
@@ -173,13 +170,15 @@ data/
                 ...
         
 ```
-### Explanation
 
+### Note
+- **All code and data from these download falls under their own licenses.**
+- `DO_supp` and `EO_supp` are modified from original ones.
 - DO_pred_2d.npy are 2D predictions from 2D part of DetNet
 - DO represents "dexter+object" dataset; EO represents "EgoDexter" dataset
 - some labels of DO and  EO is obviously wrong (u could find some examples with original labels from [dexter_object.py](datasets/dexter_object.py) or [egodexter.py](datasets/egodexter.py)), when projected into image plane, thus should be omitted.
 Here comes  `my_{}3D.txt` and `my_annotation.txt_3D.txt`.
-- STB_supp comes from [bihand](https://github.com/lixiny/bihand)
+
 
 ## Download my Results
 - my_results: [Google Drive](https://drive.google.com/file/d/1e6aG4ZSOB6Ri_1TjXI9N-1r7MtwmjA6w/view?usp=sharing) or 
@@ -252,7 +251,7 @@ python plot.py --path my_results/out_loss_auc
 |  **EO**   |     0.804    |        0.9270         |      0.811          |         0.9290          |
 
 
-### Explanation
+### Note
 - Adjusting training parameters carefully, longer training time, more complicated network or biomechanical constraint losses  could further boost accuracy.
 - As there is no official open source of original paper, above comparison is a little rough.
 
