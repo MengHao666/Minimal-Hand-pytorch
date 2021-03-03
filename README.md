@@ -53,9 +53,10 @@ Minimal-Hand-pytorch/
 
 ### Evaluation dataset
 * [STB Dataset](https://github.com/zhjwustc/icip17_stereo_hand_pose_dataset)  ;
+
+  STB_supp: for license reason, download link could be found in [bihand](https://github.com/lixiny/bihand )
   
-  STB_supp: [Google Drive](https://drive.google.com/file/d/1uAP2-U_sQkl1Ez4JkaDl01DA-Qiq2PI-/view?usp=sharing) or 
-  [Baidu Pan](https://pan.baidu.com/s/1ja23wnTsPPsjLrkE6d8s-w) (`v858`)
+  
 * [DexterObjectDataset](https://handtracker.mpi-inf.mpg.de/projects/RealtimeHO/dexter+object.htm) ;
   
   DO_supp: [Google Drive](https://drive.google.com/file/d/1uhqJGfVJs_-Yviqj9Y2Ngo7NPt5hUihl/view?usp=sharing) or 
@@ -64,6 +65,11 @@ Minimal-Hand-pytorch/
 
   EO_supp: [Google Drive](https://drive.google.com/file/d/1WRHVTp7ZmryE41xN2Yhp-qet0ddeOim4/view?usp=sharing) or 
   [Baidu Pan](https://pan.baidu.com/s/1sK4Nfvs6og-eXJGwDQCHlQ) (`axkm`)
+
+### Note
+* **All code and data from these download falls under their own licenses.**
+
+* `DO_supp` and `EO_supp` are modified from original ones.
 
 ### Processing
 - Create a data directory, extract all above datasets or additional materials in it
@@ -239,7 +245,7 @@ python plot.py --path my_results/out_loss_auc
 ### 3D PCK AUC Diffenence
 
 |  Dataset  | DetNet(paper)|  DetNet(this project) | DetNet+IKNet(paper) | DetNet+AIK(this project)|
-|  :-----:  |    :-----:   |  :------------------: |  :--------------:   | :-----------------------: |
+|  :-----:  |    :-----:   |  :------------------: |  :--------------:   | :---------------------: |
 |  **RHD**  |       -      |        0.9339         |      0.856          |         0.9301          |
 |  **STB**  |     0.891    |        0.8744         |      0.898          |         0.8647          |
 |  **DO**   |     0.923    |        0.9378         |      0.948          |         0.9392          |
