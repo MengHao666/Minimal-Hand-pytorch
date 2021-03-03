@@ -252,7 +252,7 @@ python plot.py --path my_results/out_loss_auc
 
 
 ### Note
-- Adjusting training parameters carefully, longer training time, more complicated network or biomechanical constraint losses  could further boost accuracy.
+- Adjusting training parameters carefully, longer training time, more complicated network or **[Biomechanical Constraint Losses](https://github.com/MengHao666/Hand-BMC-pytorch)**  could further boost accuracy.
 - As there is no official open source of original paper, above comparison is a little rough.
 
 ## Limitation
