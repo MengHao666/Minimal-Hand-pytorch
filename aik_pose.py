@@ -66,7 +66,7 @@ def recon_eval(op_shapes, pre_j3ds, gt_j3ds, visual, key):
     ) = evaluator.get_measures(
         20, 50, 15
     )
-    print("Recons AUC all of {}_test_set is : {}".format(key, auc_all))
+    print("Reconstruction AUC all of {}_test_set is : {}".format(key, auc_all))
 
 
 def main(args):
@@ -97,7 +97,7 @@ if __name__ == '__main__':
         "--path",
         default="out_testset",
         type=str,
-        help="sub datasets, should be listed in: [stb|rhd|do|eo]"
+        help="path"
     )
 
     parser.add_argument(
