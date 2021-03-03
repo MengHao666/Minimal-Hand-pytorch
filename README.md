@@ -173,9 +173,9 @@ data/
 
 ### Note
 - **All code and data from these download falls under their own licenses.**
-- `DO_supp` and `EO_supp` are modified from original ones.
-- DO_pred_2d.npy are 2D predictions from 2D part of DetNet
 - DO represents "dexter+object" dataset; EO represents "EgoDexter" dataset
+- `DO_supp` and `EO_supp` are modified from original ones.
+- DO_pred_2d.npy are 2D predictions from 2D part of DetNet.
 - some labels of DO and  EO is obviously wrong (u could find some examples with original labels from [dexter_object.py](datasets/dexter_object.py) or [egodexter.py](datasets/egodexter.py)), when projected into image plane, thus should be omitted.
 Here comes  `my_{}3D.txt` and `my_annotation.txt_3D.txt`.
 
