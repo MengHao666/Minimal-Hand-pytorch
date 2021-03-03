@@ -83,7 +83,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description=' get pose params. of mano model ')
 
-    # Dataset setting
     parser.add_argument(
         '-ds',
         "--dataset",
