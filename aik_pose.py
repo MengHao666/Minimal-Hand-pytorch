@@ -51,7 +51,7 @@ def recon_eval(op_shapes, pre_j3ds, gt_j3ds, visual, key):
 
         # visualization
         if visual:
-            vis.multi_plot3d([j3d_recon, j3d_pre_process], title=["recon"])
+            vis.multi_plot3d([j3d_recon, j3d_pre_process], title=["recon", "pre"])
     j3d_recons = np.array(j3d_recons)
     gt_joint, j3d_recon_align_gt = align.global_align(gt_j3ds, j3d_recons, key=key)
 
@@ -75,7 +75,7 @@ def main(args):
         print("load {}'s joint 3D".format(key_i))
         op_shapes = np.load("{}/{}_shapes.npy".format(path, key_i))
         pre_j3ds = np.load("{}/{}_pre_joints.npy".format(path, key_i))
-        gt_j3ds = np.load("{}/{}_gt_joints.npy".format(path, key_i), allow_pickle=True)
+        gt_j3ds = np.load("{}/{}_gt_joints.npy".format(path, key_i))
         recon_eval(op_shapes, pre_j3ds, gt_j3ds, args.visualize, key_i)
 
 
