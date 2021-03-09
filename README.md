@@ -13,7 +13,9 @@ This project reimplement following components :
 Offical project link:
 [\[minimal-hand\]](https://github.com/CalciferZh/minimal-hand)
 
-
+## Update
+###
+* 2021/03/09  update about shape estimation code, **time cost drop from 12s/item to 1.57s/item**
 
 ## Usage
 
@@ -284,6 +286,6 @@ If you find the project helpful, please star this project and cite them:
 
 - Code of network model was adapted from [Minimal-Hand](https://github.com/lingtengqiu/Minimal-Hand).
 
-- @Mrsirovo for the starter code of the `utils/LM.py`
+- @Mrsirovo for the starter code of the `utils/LM.py`, @maitetsu  update it later.
 
 - @maitetsu for the starter code of the `utils/AIK.py`

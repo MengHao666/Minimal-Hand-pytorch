@@ -37,18 +37,58 @@ class LM_Solver():
         self.joints = self.joints.numpy().reshape(21, 3)
 
         self.lb_target = lb_target.reshape(15, 1)
+        self.test_time = 0
 
     def update(self, beta_):
         beta = beta_.copy()
         self.count += 1
-        now = time.time()
+        # now = time.time()
         my_th_beta = torch.from_numpy(beta).float().reshape(1, 10)
         _, joints = self.mano_layer(self.th_pose, my_th_beta)
-        self.time_in_mano = time.time() - now
+        # self.time_in_mano = time.time() - now
 
         useful_lb = bone.caculate_length(joints, label="useful")
         lb_ref = useful_lb[6]
         return useful_lb, lb_ref
+
+    # split bone length determined by shape params.
+    def new_cal_ref_bone(self, _shape):
+        # now = time.time()
+        # parent joint of 16 (21 keypoints -5 finger tips) hand joints, this order follows MANO convention
+
+        parent_index = [0,
+                        0, 1, 2,
+                        0, 4, 5,
+                        0, 7, 8,
+                        0, 10, 11,
+                        0, 13, 14
+                        ]
+        # index = [0,
+        #          1, 2, 3,  # index
+        #          4, 5, 6,  # middle
+        #          7, 8, 9,  # pinky
+        #          10, 11, 12,  # ring
+        #          13, 14, 15]  # thumb
+        # transfer order from mano convention to manopth convention
+        reoder_index = [
+            13, 14, 15,
+            1, 2, 3,
+            4, 5, 6,
+            10, 11, 12,
+            7, 8, 9]
+        shape = torch.Tensor(_shape.reshape((1, 10)))
+        th_v_shaped = torch.matmul(self.mano_layer.th_shapedirs,
+                                   shape.transpose(1, 0)).permute(2, 0, 1) \
+                      + self.mano_layer.th_v_template
+        th_j = torch.matmul(self.mano_layer.th_J_regressor, th_v_shaped)
+        temp1 = th_j.clone().detach()
+        temp2 = th_j.clone().detach()[:, parent_index, :]
+        result = temp1 - temp2
+        result = torch.norm(result, dim=-1, keepdim=True)
+        ref_len = result[:, [4]]
+        result = result / ref_len
+        # self.time_in_mano = time.time() - now
+        return torch.squeeze(result, dim=-1)[:, reoder_index].cpu().numpy()
 
     def get_residual(self, beta_):
         beta = beta_.copy()
@@ -66,6 +106,7 @@ class LM_Solver():
         return lb
 
     def get_loss(self, beta_):
+
         beta = beta_.copy()
 
         lb, lb_ref = self.update(beta)
@@ -74,6 +115,14 @@ class LM_Solver():
         loss = np.linalg.norm(lb / lb_ref - self.lb_target) ** 2 + \
                self.weight * np.linalg.norm(beta) ** 2
 
+        return loss
+
+    def new_get_loss(self, beta_):
+        beta = beta_.copy()
+        temp = self.new_cal_ref_bone(beta)
+        loss = temp.reshape((15, 1))
+        loss = np.linalg.norm(loss - self.lb_target) ** 2 + \
+               self.weight * np.linalg.norm(beta)
         return loss
 
     def get_derivative(self, beta_, n):
@@ -85,8 +134,8 @@ class LM_Solver():
         params1[n] += step
         params2[n] -= step
 
-        res1 = self.get_loss(params1)
-        res2 = self.get_loss(params2)
+        res1 = self.new_get_loss(params1)
+        res2 = self.new_get_loss(params2)
 
         d = (res1 - res2) / (2 * step)
 
@@ -105,15 +154,16 @@ class LM_Solver():
 
         last_update = 0
         last_loss = 0
+        # self.test_time = 0 # test time if u need
         for i in range(self.num_Iter):
-            loss = self.get_loss(beta)
-
+            loss = self.new_get_loss(beta)
             if loss < self.minimal_loss:
                 self.minimal_loss = loss
                 self.best_beta = beta
 
             if abs(loss - last_loss) < self.threshold_stop:
-                self.time_total = time.time() - self.time_start
+                # self.time_total = time.time() - self.time_start
+                # return beta, self.test_time # test time if u want
                 return beta
 
             for k in range(num_beta):
@@ -136,6 +186,7 @@ class LM_Solver():
             last_loss = loss
             self.residual_memory.append(loss)
 
+        # return beta, self.test_time
         return beta
 
     def get_result(self):
