@@ -15,7 +15,8 @@ Offical project link:
 
 ## Update
 ###
-* 2021/03/09  update about shape estimation code, **time cost drop from 12s/item to 1.57s/item**
+* 2021/03/09  update about `utils/LM.py`, **time cost drop from 12s/item to 1.57s/item**
+* 2021/03/09  update about `utils/LM.py`, **time cost drop from 1.57s/item to 0.27s/item**
 
 ## Usage
 
