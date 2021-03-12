@@ -16,7 +16,7 @@ Offical project link:
 ## Update
 ###
 * 2021/03/09  update about `utils/LM.py`, **time cost drop from 12s/item to 1.57s/item**
-* 2021/03/09  update about `utils/LM.py`, **time cost drop from 1.57s/item to 0.27s/item**
+* 2021/03/12  update about `utils/LM.py`, **time cost drop from 1.57s/item to 0.27s/item**
 
 ## Usage
 
@@ -251,7 +251,7 @@ python plot.py --path my_results/out_loss_auc
 |  **RHD**  |       -      |        0.9339         |      0.856          |         0.9301          |
 |  **STB**  |     0.891    |        0.8744         |      0.898          |         0.8647          |
 |  **DO**   |     0.923    |        0.9378         |      0.948          |         0.9392          |
-|  **EO**   |     0.804    |        0.9270         |      0.811          |         0.9290          |
+|  **EO**   |     0.804    |        0.9270         |      0.811          |         0.9288          |
 
 
 ### Note
