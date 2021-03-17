@@ -17,7 +17,7 @@ Offical project link:
 ###
 * 2021/03/09  update about `utils/LM.py`, **time cost drop from 12s/item to 1.57s/item**
 * 2021/03/12  update about `utils/LM.py`, **time cost drop from 1.57s/item to 0.27s/item**
-
+* 2021/03/17  realtime perfomance is achieved when using PSO to estimate shape, coming soon 
 ## Usage
 
 - Retrieve the code
