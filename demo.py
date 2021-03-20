@@ -1,14 +1,12 @@
 import cv2
 import torch
-from manopth import manolayer, demo
+from manopth import manolayer
 from model.detnet import detnet
-from utils import func, bone, AIK
+from utils import func, bone, AIK, smoother
 from utils.LM_new import LM_Solver
 import numpy as np
 import matplotlib.pyplot as plt
-from utils.misc import clean_state_dict
 from utils import vis
-import smoother
 from op_pso import PSO
 import open3d
 
