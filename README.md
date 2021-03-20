@@ -2,6 +2,10 @@
 
 **Unofficial** PyTorch reimplementation of [minimal-hand](https://calciferzh.github.io/files/zhou2020monocular.pdf) (CVPR2020). 
 
+![demo](assets/demo.gif)
+  
+you can also find in <a href='https://youtu.be/gAEyKUUwGhk'>youtube</a> or [bilibili](https://www.bilibili.com/video/BV1uZ4y1w7M5/)
+
 
 This project reimplement following components :
 1. Training (DetNet) and Evaluation Code 
@@ -26,10 +30,7 @@ Offical project link:
 
   
   
-  ![demo](assets/demo.gif)
   
-    you can also find in <a href='https://youtu.be/gAEyKUUwGhk'>youtube</a> or [bilibili](https://www.bilibili.com/video/BV1uZ4y1w7M5/)
-
 ## Usage
 
 - Retrieve the code
