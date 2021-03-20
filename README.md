@@ -2,6 +2,10 @@
 
 **Unofficial** PyTorch reimplementation of [minimal-hand](https://calciferzh.github.io/files/zhou2020monocular.pdf) (CVPR2020). 
 
+![demo](assets/demo.gif)
+  
+you can also find in <a href='https://youtu.be/gAEyKUUwGhk'>youtube</a> or [bilibili](https://www.bilibili.com/video/BV1uZ4y1w7M5/)
+
 
 This project reimplement following components :
 1. Training (DetNet) and Evaluation Code 
@@ -15,9 +19,18 @@ Offical project link:
 
 ## Update
 ###
+
 * 2021/03/09  update about `utils/LM.py`, **time cost drop from 12s/item to 1.57s/item**
+
 * 2021/03/12  update about `utils/LM.py`, **time cost drop from 1.57s/item to 0.27s/item**
+
 * 2021/03/17  realtime perfomance is achieved when using PSO to estimate shape, coming soon 
+
+* 2021/03/20  Add PSO to  estimate shape. AUC is decreased by about 0.01 on STB and RHD datasets, and increased a little on EO and do datasets. Modifiy utlis/vis.py to improve realtime perfomance
+
+  
+  
+  
 ## Usage
 
 - Retrieve the code
@@ -58,7 +71,6 @@ Minimal-Hand-pytorch/
 * [STB Dataset](https://github.com/zhjwustc/icip17_stereo_hand_pose_dataset)  ;
 
   STB_supp: for license reason, download link could be found in [bihand](https://github.com/lixiny/bihand )
-  
   
 * [DexterObjectDataset](https://handtracker.mpi-inf.mpg.de/projects/RealtimeHO/dexter+object.htm) ;
   
@@ -182,14 +194,18 @@ data/
 - some labels of DO and  EO is obviously wrong (u could find some examples with original labels from [dexter_object.py](datasets/dexter_object.py) or [egodexter.py](datasets/egodexter.py)), when projected into image plane, thus should be omitted.
 Here come  `my_{}3D.txt` and `my_annotation.txt_3D.txt`.
 
-
 ## Download my Results
+
 - my_results: [Google Drive](https://drive.google.com/file/d/1e6aG4ZSOB6Ri_1TjXI9N-1r7MtwmjA6w/view?usp=sharing) or 
   [Baidu Pan](https://pan.baidu.com/s/1Hh0ZU8p04prFVSp9bQm_IA) (`2rv7`)
-
 - extract it in project folder
+- The parameters used in the real-time demo can be found [google_drive](https://drive.google.com/file/d/1fug29PBMo1Cb2DwAtX7f2E_yLHjDBmiM/view?usp=sharing) or [baidu](https://pan.baidu.com/s/1gr3xSkLuvsveSQ7nW1taSA) (un06). It is provided by [Hand-BMC-pytorch](https://github.com/MengHao666/Hand-BMC-pytorch)
 
+<h2> realtime demo</h2>
 
+```
+python demo.py
+```
 
 ## DetNet Training and Evaluation
 
@@ -215,6 +231,7 @@ python train_detnet.py --checkpoint my_results/checkpoints  --datasets_test "eo"
 ```
 
 ## Shape Estimation
+
 Run the shape optimization code. This can be very time consuming when the weight parameter is quite small.
 ```
 python optimize_shape.py --weight 1e-5
@@ -225,6 +242,7 @@ python optimize_shape.py --path my_results/out_testset/
 ```
 
 ## Pose Estimation
+
 Run the following code which uses a analytical inverse kinematics method. 
 ```
 python aik_pose.py
@@ -233,8 +251,8 @@ or use my results
 ```
 python aik_pose.py --path my_results/out_testset/
 ```
- 
-  
+
+
 ### Detnet training and evaluation curve
 Run the following code to see my results
 ```
@@ -246,20 +264,22 @@ python plot.py --path my_results/out_loss_auc
 
 ### 3D PCK AUC Diffenence
 
-|  Dataset  | DetNet(paper)|  DetNet(this project) | DetNet+IKNet(paper) | DetNet+AIK(this project)|
-|  :-----:  |    :-----:   |  :------------------: |  :--------------:   | :---------------------: |
-|  **RHD**  |       -      |        0.9339         |      0.856          |         0.9301          |
-|  **STB**  |     0.891    |        0.8744         |      0.898          |         0.8647          |
-|  **DO**   |     0.923    |        0.9378         |      0.948          |         0.9392          |
-|  **EO**   |     0.804    |        0.9270         |      0.811          |         0.9288          |
+\* mean this project
+
+| Dataset | DetNet(paper) | DetNet(*) | DetNet+IKNet(paper) | DetNet+LM+AIK(*) | DetNet+PSO+AIK(*) |
+| :-----: | :-----------: | :-------: | :-----------------: | :--------------: | ----------------- |
+| **RHD** |       -       |  0.9339   |        0.856        |      0.9301      | 0.9227            |
+| **STB** |     0.891     |  0.8744   |        0.898        |      0.8647      | 0.8548            |
+| **DO**  |     0.923     |  0.9378   |        0.948        |      0.9392      | 0.9401            |
+| **EO**  |     0.804     |  0.9270   |        0.811        |      0.9288      | 0.9367            |
+
 
 
 ### Note
+
 - Adjusting training parameters carefully, longer training time, more complicated network or **[Biomechanical Constraint Losses](https://github.com/MengHao666/Hand-BMC-pytorch)**  could further boost accuracy.
 - As there is no official open source of original paper, above comparison is a little rough.
 
-## Limitation
-In this **reimplementation project**, the Pose Estimation depends on time-costing Shape Estimation, thus cannot inference pose parameters in real-time like [original paper](https://github.com/CalciferZh/minimal-hand/blob/master/teaser.gif) .
 ## Citation
 
 This is the **unofficial** pytorch reimplementation of the paper "Monocular Real-time Hand Shape and Motion Capture using Multi-modal Data" (CVPR 2020).

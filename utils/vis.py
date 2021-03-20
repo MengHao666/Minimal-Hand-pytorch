@@ -1,50 +1,48 @@
 import matplotlib.pyplot as plt
 
 
-def plot3d(joints_, title=None):
+def plot3d(joints_,ax, title=None):
     joints = joints_.copy()
-    fig = plt.figure(figsize=[50, 50])
-    ax = fig.add_subplot(111, projection='3d')
+    ax.plot(joints[:, 0], joints[:, 1], joints[:, 2], 'yo', label='keypoint')
 
-    plt.plot(joints[:, 0], joints[:, 1], joints[:, 2], 'yo', label='keypoint')
-
-    plt.plot(joints[:5, 0], joints[:5, 1],
+    ax.plot(joints[:5, 0], joints[:5, 1],
              joints[:5, 2],
              'r',
              label='thumb')
 
-    plt.plot(joints[[0, 5, 6, 7, 8, ], 0], joints[[0, 5, 6, 7, 8, ], 1],
+    ax.plot(joints[[0, 5, 6, 7, 8, ], 0], joints[[0, 5, 6, 7, 8, ], 1],
              joints[[0, 5, 6, 7, 8, ], 2],
              'b',
              label='index')
-    plt.plot(joints[[0, 9, 10, 11, 12, ], 0], joints[[0, 9, 10, 11, 12], 1],
+    ax.plot(joints[[0, 9, 10, 11, 12, ], 0], joints[[0, 9, 10, 11, 12], 1],
              joints[[0, 9, 10, 11, 12], 2],
              'b',
              label='middle')
-    plt.plot(joints[[0, 13, 14, 15, 16], 0], joints[[0, 13, 14, 15, 16], 1],
+    ax.plot(joints[[0, 13, 14, 15, 16], 0], joints[[0, 13, 14, 15, 16], 1],
              joints[[0, 13, 14, 15, 16], 2],
              'b',
              label='ring')
-    plt.plot(joints[[0, 17, 18, 19, 20], 0], joints[[0, 17, 18, 19, 20], 1],
+    ax.plot(joints[[0, 17, 18, 19, 20], 0], joints[[0, 17, 18, 19, 20], 1],
              joints[[0, 17, 18, 19, 20], 2],
              'b',
              label='pinky')
     # snap convention
-    plt.plot(joints[4][0], joints[4][1], joints[4][2], 'rD', label='thumb')
-    plt.plot(joints[8][0], joints[8][1], joints[8][2], 'ro', label='index')
-    plt.plot(joints[12][0], joints[12][1], joints[12][2], 'ro', label='middle')
-    plt.plot(joints[16][0], joints[16][1], joints[16][2], 'ro', label='ring')
-    plt.plot(joints[20][0], joints[20][1], joints[20][2], 'ro', label='pinky')
+    ax.plot(joints[4][0], joints[4][1], joints[4][2], 'rD', label='thumb')
+    ax.plot(joints[8][0], joints[8][1], joints[8][2], 'ro', label='index')
+    ax.plot(joints[12][0], joints[12][1], joints[12][2], 'ro', label='middle')
+    ax.plot(joints[16][0], joints[16][1], joints[16][2], 'ro', label='ring')
+    ax.plot(joints[20][0], joints[20][1], joints[20][2], 'ro', label='pinky')
     # plt.plot(joints [1:, 0], joints [1:, 1], joints [1:, 2], 'o')
-
-    plt.title(title)
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_zlabel('z')
-    plt.legend()
+    ax.set_xlim(xmin=-1.0,xmax=1.0)
+    ax.set_ylim(ymin=-1.0,ymax=1.0)
+    ax.set_zlim(zmin=-1.0,zmax=1.0)
+    # plt.legend()
     # ax.view_init(330, 110)
     ax.view_init(-90, -90)
-    plt.show()
+    return ax
 
 
 def multi_plot3d(jointss_, title=None):
