@@ -26,7 +26,7 @@ Offical project link:
 
   
   
-  ![demo](D:\temp\Minimal-Hand-pytorch\demo.gif)
+  ![demo](.\demo.gif)
   
     you can also find in <a href='https://youtu.be/gAEyKUUwGhk'>youtube</a> or [bilibili](https://www.bilibili.com/video/BV1uZ4y1w7M5/)
 
