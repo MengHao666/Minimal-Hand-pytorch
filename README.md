@@ -4,7 +4,7 @@
 
 ![demo](assets/demo.gif)
   
-you can also find  in <a href='https://youtu.be/gAEyKUUwGhk'>youtube</a> or [bilibili](https://www.bilibili.com/video/BV1uZ4y1w7M5/)
+you can also find it in <a href='https://youtu.be/gAEyKUUwGhk'>youtube</a> or [bilibili](https://www.bilibili.com/video/BV1uZ4y1w7M5/)
 
 
 This project reimplement following components :
@@ -28,7 +28,6 @@ Offical project link:
 
 * 2021/03/20  Add PSO to  estimate shape. AUC is decreased by about 0.01 on STB and RHD datasets, and increased a little on EO and do datasets. Modifiy utlis/vis.py to improve realtime perfomance
 
-  it
   
   
 ## Usage
