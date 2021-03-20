@@ -26,7 +26,7 @@ Offical project link:
 
   
   
-  ![demo](.\demo.gif)
+  ![demo](assets\demo.gif)
   
     you can also find in <a href='https://youtu.be/gAEyKUUwGhk'>youtube</a> or [bilibili](https://www.bilibili.com/video/BV1uZ4y1w7M5/)
 
