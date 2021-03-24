@@ -39,8 +39,6 @@ Offical project link:
 
   
   
-  
-
 ## Usage
 
 - Retrieve the code
@@ -274,7 +272,7 @@ python plot.py --path my_results/out_loss_auc
 
 ### 3D PCK AUC Diffenence
 
-\* mean this project
+\* means this project
 
 | Dataset | DetNet(paper) | DetNet(*) | DetNet+IKNet(paper) | DetNet+LM+AIK(*) | DetNet+PSO+AIK(*) |
 | :-----: | :-----------: | :-------: | :-----------------: | :--------------: | :-------------: |
