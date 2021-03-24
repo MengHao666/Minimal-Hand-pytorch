@@ -19,7 +19,7 @@ class PSO:
         parameter: a list type, like [NGEN, pop_size, var_num_min, var_num_max]
         """
         self.mano_layer = ManoLayer(side="right",
-                                    mano_root='D:/code/manopth-master/mano/models', use_pca=False, flat_hand_mean=True)
+                                    mano_root='D:/code/manopth/mano/models', use_pca=False, flat_hand_mean=True)
 
         # 初始化
         self.NGEN = parameters[0]
@@ -75,7 +75,7 @@ class PSO:
         return torch.squeeze(result, dim=-1)[:, reoder_index].cpu().numpy()
 
     def batch_new_get_loss(self, beta_):
-        weight = 1e-2
+        weight = 1e-3
         beta = beta_.copy()
         temp = self.new_cal_ref_bone(beta)
         loss = np.linalg.norm(temp - self.target, axis=-1, keepdims=True) ** 2 + \
@@ -134,9 +134,9 @@ class PSO:
         # t = [t for t in range(self.NGEN)]
         # plt.plot(t, best_fit, color='b', linewidth=2)
         # plt.show()
-        # err = solver.new_cal_ref_bone(self.ng_best)
-        # err = align_bone_len(err, self.target)
-        # return err
+        err = solver.new_cal_ref_bone(self.ng_best)
+        err = align_bone_len(err, self.target)
+        return err
 
 
 if __name__ == '__main__':
@@ -154,7 +154,7 @@ if __name__ == '__main__':
         up = np.zeros((1, 10)) + 3.0
         parameters = [NGEN, popsize, low, up]
         err = np.zeros((1, 15))
-        path = 'out_testset_new/' + data + '_pre_joints.npy'
+        path = 'out_testset/' + data + '_pre_joints.npy'
         print('load:{}'.format(path))
         target = np.load(path)
         pso_shape = np.zeros((target.shape[0], 10))
@@ -164,7 +164,8 @@ if __name__ == '__main__':
             _target = _target.reshape((1, 15))
             pso = PSO(parameters, _target)
             err += pso.main()
+            pso_shape[[i]] = pso.ng_best
         print(err.sum() / target.shape[0])
-        save_path = 'out_testset_new/' + data + '_pso.npy'
+        save_path = 'out_testset/' + data + '_pso.npy'
         print('save:{}'.format(save_path))
         np.save(save_path, pso_shape)

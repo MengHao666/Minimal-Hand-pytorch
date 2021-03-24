@@ -14,17 +14,17 @@ def recon_eval(op_shapes, pre_j3ds, gt_j3ds, visual, key):
     pose0 = torch.eye(3).repeat(1, 16, 1, 1).cuda()
     mano = manolayer.ManoLayer(flat_hand_mean=True,
                                side="right",
-                               mano_root='mano/models',
+                               mano_root='D:/code/manopth/mano/models',
                                use_pca=False,
                                root_rot_mode='rotmat',
-                               joint_rot_mode='rotmat').cuda()
+                               joint_rot_mode='rotmat')
 
     j3d_recons = []
     evaluator = EvalUtil()
     for i in tqdm(range(pre_j3ds.shape[0])):
         j3d_pre = pre_j3ds[i]
 
-        op_shape = torch.tensor(op_shapes[i]).unsqueeze(0).cuda()
+        op_shape = torch.tensor(op_shapes[i]).float().unsqueeze(0)
         _, j3d_p0_ops = mano(pose0, op_shape)
         template = j3d_p0_ops.cpu().numpy().squeeze() / 1000.0  # template, m
 
@@ -33,10 +33,10 @@ def recon_eval(op_shapes, pre_j3ds, gt_j3ds, visual, key):
         j3d_pre_process = j3d_pre_process - j3d_pre_process[0] + template[0]
 
         pose_R = AIK.adaptive_IK(template, j3d_pre_process)
-        pose_R = torch.from_numpy(pose_R).float().cuda()
+        pose_R = torch.from_numpy(pose_R).float()
 
         #  reconstruction
-        hand_verts, j3d_recon = mano(pose_R, op_shape.float().cuda())
+        hand_verts, j3d_recon = mano(pose_R, op_shape.float())
 
         # visualization
         if visual:
@@ -73,7 +73,8 @@ def main(args):
     path = args.path
     for key_i in args.dataset:
         print("load {}'s joint 3D".format(key_i))
-        op_shapes = np.load("{}/{}_shapes.npy".format(path, key_i))
+        print('load {}'.format("{}/{}_pso.npy".format(path, key_i)))
+        op_shapes = np.load("{}/{}_pso.npy".format(path, key_i))
         pre_j3ds = np.load("{}/{}_pre_joints.npy".format(path, key_i))
         gt_j3ds = np.load("{}/{}_gt_joints.npy".format(path, key_i))
         recon_eval(op_shapes, pre_j3ds, gt_j3ds, args.visualize, key_i)

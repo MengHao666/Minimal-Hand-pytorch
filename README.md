@@ -3,7 +3,7 @@
 **Unofficial** PyTorch reimplementation of [minimal-hand](https://calciferzh.github.io/files/zhou2020monocular.pdf) (CVPR2020). 
 
 ![demo](assets/demo.gif)
-  
+
 you can also find in <a href='https://youtu.be/gAEyKUUwGhk'>youtube</a> or [bilibili](https://www.bilibili.com/video/BV1uZ4y1w7M5/)
 
 
@@ -26,11 +26,14 @@ Offical project link:
 
 * 2021/03/17  realtime perfomance is achieved when using PSO to estimate shape, coming soon 
 
-* 2021/03/20  Add PSO to  estimate shape. AUC is decreased by about 0.01 on STB and RHD datasets, and increased a little on EO and do datasets. Modifiy utlis/vis.py to improve realtime perfomance
+* 2021/03/20  Add PSO to  estimate shape. ~~AUC is decreased by about 0.01 on STB and RHD datasets, and increased a little on EO and do datasets.~~ Modifiy utlis/vis.py to improve realtime perfomance
+
+* 2021/03/24 Fixed some errors in calculating AUC. Update the 3D PCK AUC Diffenence.
 
   
   
   
+
 ## Usage
 
 - Retrieve the code
@@ -267,11 +270,11 @@ python plot.py --path my_results/out_loss_auc
 \* mean this project
 
 | Dataset | DetNet(paper) | DetNet(*) | DetNet+IKNet(paper) | DetNet+LM+AIK(*) | DetNet+PSO+AIK(*) |
-| :-----: | :-----------: | :-------: | :-----------------: | :--------------: | ----------------- |
-| **RHD** |       -       |  0.9339   |        0.856        |      0.9301      | 0.9227            |
-| **STB** |     0.891     |  0.8744   |        0.898        |      0.8647      | 0.8548            |
-| **DO**  |     0.923     |  0.9378   |        0.948        |      0.9392      | 0.9401            |
-| **EO**  |     0.804     |  0.9270   |        0.811        |      0.9288      | 0.9367            |
+| :-----: | :-----------: | :-------: | :-----------------: | :--------------: | :-------------: |
+| **RHD** |       -       |  0.9339   |        0.856        |      0.9301      | 0.9310            |
+| **STB** |     0.891     |  0.8744   |        0.898        |      0.8647      | 0.8671            |
+| **DO**  |     0.923     |  0.9378   |        0.948        |      0.9392      | 0.9342            |
+| **EO**  |     0.804     |  0.9270   |        0.811        |      0.9288      | 0.9277            |
 
 
 
