@@ -2,9 +2,16 @@
 
 **Unofficial** PyTorch reimplementation of [minimal-hand](https://calciferzh.github.io/files/zhou2020monocular.pdf) (CVPR2020). 
 
-![demo](assets/demo.gif)
+![demo](assets/demo2.gif)
 
-you can also find in <a href='https://youtu.be/gAEyKUUwGhk'>youtube</a> or [bilibili](https://www.bilibili.com/video/BV1uZ4y1w7M5/)
+you can also find in youtube or bilibili
+
+<ul>
+    <li>bare hand <a href='https://youtu.be/gAEyKUUwGhk'> youtube</a> or <a href='https://www.bilibili.com/video/BV1uZ4y1w7M5/'> bilibili</a> </li>
+    <li>hand-object intercation <a href='https://youtu.be/XWUJEHkEMwA'> youtube</a> or <a href='https://www.bilibili.com/video/BV1mU4y1a71f/'> bilibili</a> </li>
+</ul>
+
+
 
 
 This project reimplement following components :
@@ -24,7 +31,7 @@ Offical project link:
 
 * 2021/03/12  update about `utils/LM.py`, **time cost drop from 1.57s/item to 0.27s/item**
 
-* 2021/03/17  realtime perfomance is achieved when using PSO to estimate shape, coming soon 
+* 2021/03/17  realtime perfomance is achieved when using PSO to estimate shape, coming soon
 
 * 2021/03/20  Add PSO to  estimate shape. ~~AUC is decreased by about 0.01 on STB and RHD datasets, and increased a little on EO and do datasets.~~ Modifiy utlis/vis.py to improve realtime perfomance
 
