@@ -25,7 +25,7 @@ class LM_Solver():
         self.pose = th_pose.numpy()
 
         self.mano_layer = ManoLayer(side="right",
-                                    mano_root='D:/code/manopth-master/mano/models', use_pca=False, flat_hand_mean=True)
+                                    mano_root='D:/code/manopth/mano/models', use_pca=False, flat_hand_mean=True)
 
         self.threshold_stop = 10 ** -13
         self.weight = weight
