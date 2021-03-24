@@ -2,6 +2,7 @@
 
 **Unofficial** PyTorch reimplementation of [minimal-hand](https://calciferzh.github.io/files/zhou2020monocular.pdf) (CVPR2020). 
 
+![demo](assets/demo.gif)
 ![demo](assets/DEMO2.gif)
 
 you can also find in youtube or bilibili
