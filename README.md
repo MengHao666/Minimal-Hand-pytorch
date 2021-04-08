@@ -208,7 +208,7 @@ Here come  `my_{}3D.txt` and `my_annotation.txt_3D.txt`.
 - my_results: [Google Drive](https://drive.google.com/file/d/1e6aG4ZSOB6Ri_1TjXI9N-1r7MtwmjA6w/view?usp=sharing) or 
   [Baidu Pan](https://pan.baidu.com/s/1Hh0ZU8p04prFVSp9bQm_IA) (`2rv7`)
 - extract it in project folder
-- The parameters used in the real-time demo can be found [google_drive](https://drive.google.com/file/d/1fug29PBMo1Cb2DwAtX7f2E_yLHjDBmiM/view?usp=sharing) or [baidu](https://pan.baidu.com/s/1gr3xSkLuvsveSQ7nW1taSA) (un06). It is provided by [Hand-BMC-pytorch](https://github.com/MengHao666/Hand-BMC-pytorch)
+- **The parameters used in the real-time demo can be found [google_drive](https://drive.google.com/file/d/1fug29PBMo1Cb2DwAtX7f2E_yLHjDBmiM/view?usp=sharing) or [baidu](https://pan.baidu.com/s/1gr3xSkLuvsveSQ7nW1taSA) (un06). It is provided by [Hand-BMC-pytorch](https://github.com/MengHao666/Hand-BMC-pytorch)**
 
 <h2> realtime demo</h2>
 
