@@ -133,7 +133,7 @@ class detnet(nn.Module):
     def lmap_to_xyz(lmap, argmax):
         lmap = rearrange(lmap, 'b j l h w -> b j (h w) l')
         index = repeat(argmax, 'b j i -> b j i c', c=3)
-        xyz = torch.gather(lmap, dim=2, index=index).squeeze()
+        xyz = torch.gather(lmap, dim=2, index=index).squeeze(2)
         return xyz
 
 
