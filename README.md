@@ -101,10 +101,11 @@ data/
 
     CMU/
         hand143_panopticdb/
-            datasets/
+            imgs/
             ...
         hand_labels/
-            datasets/
+            manual_test/
+            manual_train/
             ...
 
     RHD/
