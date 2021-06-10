@@ -77,7 +77,7 @@ Minimal-Hand-pytorch/
 * [GANerated Hands Dataset](https://handtracker.mpi-inf.mpg.de/projects/GANeratedHands/GANeratedDataset.htm)
 
 ### Evaluation dataset
-* [STB Dataset](https://github.com/zhjwustc/icip17_stereo_hand_pose_dataset)，or u can find it[here](STB Dataset]https://bhpan.buaa.edu.cn:443/link/55321872BA66E9205C91BA30D9FADC8F):
+* [STB Dataset](https://github.com/zhjwustc/icip17_stereo_hand_pose_dataset)，or u can find it[here](https://bhpan.buaa.edu.cn:443/link/55321872BA66E9205C91BA30D9FADC8F):
 
   STB_supp: for license reason, download link could be found in [bihand](https://github.com/lixiny/bihand )
   
