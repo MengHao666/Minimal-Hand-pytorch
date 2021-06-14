@@ -1,0 +1,3 @@
+- MANO is unisex
+- MANO comes in 2 versions for left and right hand
+- SMPL+H is gender specific

@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from utils import vis
 from op_pso import PSO
 import open3d
+from model import shape_net
+import os
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 _mano_root = 'mano/models'
@@ -25,6 +27,14 @@ for k, v in check_point.items():
 model_state.update(state)
 module.load_state_dict(model_state)
 print('load model finished')
+
+shape_model = shape_net.ShapeNet()
+shape_net.load_checkpoint(
+    shape_model, os.path.join('checkpoints', 'ckp_siknet_synth_41.pth.tar')
+)
+for params in shape_model.parameters():
+    params.requires_grad = False
+
 pose, shape = func.initiate("zero")
 pre_useful_bone_len = np.zeros((1, 15))
 pose0 = torch.eye(3).repeat(1, 16, 1, 1)
@@ -110,7 +120,13 @@ while (cap.isOpened()):
     opt_shape = pso.ng_best
     opt_shape = shape_fliter.process(opt_shape)
 
-    opt_tensor_shape = torch.tensor(opt_shape, dtype=torch.float)
+    shape_model_input = torch.tensor(pre_useful_bone_len, dtype=torch.float)
+    shape_model_input = shape_model_input.reshape((1, 15))
+    dl_shape = shape_model(shape_model_input)
+    dl_shape = dl_shape['beta'].numpy()
+    dl_shape = shape_fliter.process(dl_shape)
+    # pose优化
+    opt_tensor_shape = torch.tensor(dl_shape, dtype=torch.float)
     _, j3d_p0_ops = mano(pose0, opt_tensor_shape)
     template = j3d_p0_ops.cpu().numpy().squeeze(0) / 1000.0  # template, m 21*3
     ratio = np.linalg.norm(template[9] - template[0]) / np.linalg.norm(pre_joints[9] - pre_joints[0])

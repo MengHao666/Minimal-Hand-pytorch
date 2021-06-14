@@ -38,7 +38,8 @@ Offical project link:
 
 * 2021/03/24 Fixed some errors in calculating AUC. Update the 3D PCK AUC Diffenence.
 
-  
+* 2021/06/14 A new method to estimate shape parameters by using fully connected neural network is added. Refer to [ShapeNet.md](./ShapeNet.md) for details. Thanks to kishan1823 and EEWenbinWu for pointing out the mistake. There are a little differences between the manopth I used and the official manopth. More details see [issues 11](https://github.com/MengHao666/Minimal-Hand-pytorch/issues/11)
+
   
 ## Usage
 
@@ -101,11 +102,10 @@ data/
 
     CMU/
         hand143_panopticdb/
-            imgs/
+            datasets/
             ...
         hand_labels/
-            manual_test/
-            manual_train/
+            datasets/
             ...
 
     RHD/
@@ -276,16 +276,16 @@ python plot.py --path my_results/out_loss_auc
 
 \* means this project
 
-| Dataset | DetNet(paper) | DetNet(*) | DetNet+IKNet(paper) | DetNet+LM+AIK(*) | DetNet+PSO+AIK(*) |
-| :-----: | :-----------: | :-------: | :-----------------: | :--------------: | :-------------: |
-| **RHD** |       -       |  0.9339   |        0.856        |      0.9301      | 0.9310            |
-| **STB** |     0.891     |  0.8744   |        0.898        |      0.8647      | 0.8671            |
-| **DO**  |     0.923     |  0.9378   |        0.948        |      0.9392      | 0.9342            |
-| **EO**  |     0.804     |  0.9270   |        0.811        |      0.9288      | 0.9277            |
+| Dataset | DetNet(paper) | DetNet(*) | DetNet+IKNet(paper) | DetNet+LM+AIK(*) | DetNet+PSO+AIK(*) | DetNet+DL+AIK(*) |
+| :-----: | :-----------: | :-------: | :-----------------: | :--------------: | :-------------: | :-------------: |
+| **RHD** |       -       |  0.9339   |        0.856        |      0.9301      | 0.9310            | 0.9272     |
+| **STB** |     0.891     |  0.8744   |        0.898        |      0.8647      | 0.8671            | 0.8624    |
+| **DO**  |     0.923     |  0.9378   |        0.948        |      0.9392      | 0.9342            | 0.9400  |
+| **EO**  |     0.804     |  0.9270   |        0.811        |      0.9288      | 0.9277            | 0.9365   |
 
 
 
-### Note
+### Notev
 
 - Adjusting training parameters carefully, longer training time, more complicated network or **[Biomechanical Constraint Losses](https://github.com/MengHao666/Hand-BMC-pytorch)**  could further boost accuracy.
 - As there is no official open source of original paper, above comparison is a little rough.
