@@ -110,22 +110,11 @@ while (cap.isOpened()):
     filted_ax = vis.plot3d(flited_joints + new_tran, fliter_ax)
     pre_useful_bone_len = bone.caculate_length(pre_joints, label="useful")
 
-    NGEN = 100
-    popsize = 100
-    low = np.zeros((1, 10)) - 3.0
-    up = np.zeros((1, 10)) + 3.0
-    parameters = [NGEN, popsize, low, up]
-    pso = PSO(parameters, pre_useful_bone_len.reshape((1, 15)),_mano_root)
-    pso.main()
-    opt_shape = pso.ng_best
-    opt_shape = shape_fliter.process(opt_shape)
-
     shape_model_input = torch.tensor(pre_useful_bone_len, dtype=torch.float)
     shape_model_input = shape_model_input.reshape((1, 15))
     dl_shape = shape_model(shape_model_input)
     dl_shape = dl_shape['beta'].numpy()
     dl_shape = shape_fliter.process(dl_shape)
-    # pose优化
     opt_tensor_shape = torch.tensor(dl_shape, dtype=torch.float)
     _, j3d_p0_ops = mano(pose0, opt_tensor_shape)
     template = j3d_p0_ops.cpu().numpy().squeeze(0) / 1000.0  # template, m 21*3
