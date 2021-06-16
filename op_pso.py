@@ -13,13 +13,13 @@ from utils.LM_new import LM_Solver
 
 
 class PSO:
-    def __init__(self, parameters, target):
+    def __init__(self, parameters, target, _mano_root='mano/models'):
         """
         particle swarm optimization
         parameter: a list type, like [NGEN, pop_size, var_num_min, var_num_max]
         """
         self.mano_layer = ManoLayer(side="right",
-                                    mano_root='D:/code/manopth/mano/models', use_pca=False, flat_hand_mean=True)
+                                    mano_root=_mano_root, use_pca=False, flat_hand_mean=True)
 
         # 初始化
         self.NGEN = parameters[0]
@@ -82,8 +82,6 @@ class PSO:
                weight * np.linalg.norm(beta, axis=-1, keepdims=True)
         return loss
 
-
-
     def update_operator(self, pop_size):
 
         c1 = 2
@@ -109,7 +107,7 @@ class PSO:
         self.g_best = self.pop_x[g_best_index]
         self.g_best_fit = self.p_best_fit[g_best_index][0][0]
 
-    def main(self):
+    def main(self, slover=None, return_err=False):
         best_fit = []
         self.ng_best = np.zeros((1, self.var_num))
         self.ng_best_fit = self.batch_new_get_loss(self.ng_best)[0][0]
@@ -134,9 +132,10 @@ class PSO:
         # t = [t for t in range(self.NGEN)]
         # plt.plot(t, best_fit, color='b', linewidth=2)
         # plt.show()
-        err = solver.new_cal_ref_bone(self.ng_best)
-        err = align_bone_len(err, self.target)
-        return err
+        if return_err:
+            err = solver.new_cal_ref_bone(self.ng_best)
+            err = align_bone_len(err, self.target)
+            return err
 
 
 if __name__ == '__main__':
@@ -163,7 +162,7 @@ if __name__ == '__main__':
             _target = bone.caculate_length(_target, label='useful')
             _target = _target.reshape((1, 15))
             pso = PSO(parameters, _target)
-            err += pso.main()
+            err += pso.main(slover=solver, return_err=True)
             pso_shape[[i]] = pso.ng_best
         print(err.sum() / target.shape[0])
         save_path = 'out_testset/' + data + '_pso.npy'

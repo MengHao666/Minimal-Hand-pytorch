@@ -10,7 +10,7 @@ from utils import bone
 
 class LM_Solver():
     def __init__(self, num_Iter=500, th_beta=None, th_pose=None, lb_target=None,
-                 weight=0.01):
+                 weight=0.01,_mano_root='mano/models'):
         self.count = 0
         self.time_start = time.time()
         self.time_in_mano = 0
@@ -25,7 +25,7 @@ class LM_Solver():
         self.pose = th_pose.numpy()
 
         self.mano_layer = ManoLayer(side="right",
-                                    mano_root='D:/code/manopth/mano/models', use_pca=False, flat_hand_mean=True)
+                                    mano_root='mano/models', use_pca=False, flat_hand_mean=True)
 
         self.threshold_stop = 10 ** -13
         self.weight = weight
