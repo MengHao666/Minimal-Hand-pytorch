@@ -212,10 +212,16 @@ Here come  `my_{}3D.txt` and `my_annotation.txt_3D.txt`.
 - **The parameters used in the real-time demo can be found [google_drive](https://drive.google.com/file/d/1fug29PBMo1Cb2DwAtX7f2E_yLHjDBmiM/view?usp=sharing) or [baidu](https://pan.baidu.com/s/1gr3xSkLuvsveSQ7nW1taSA) (un06). It is trained with loss of [Hand-BMC-pytorch](https://github.com/MengHao666/Hand-BMC-pytorch) together！！！**
 - **The training data and pre-trained model  of ShapeNet could be found in [google_drive](https://drive.google.com/file/d/1n5Eaw70Qyn1RQutzMZGyJ_WmaNE3CBjL/view?usp=sharinghttps://drive.google.com/file/d/1n5Eaw70Qyn1RQutzMZGyJ_WmaNE3CBjL/view?usp=sharing) or [baidupan](https://pan.baidu.com/s/1WmmYif2ftYl-zTDZKdy-iA) (197r). 
 
-<h2> realtime demo</h2>
+<h2> realtime demo with PSO-based shape estimation</h2>
 
 ```
 python demo.py
+```
+
+<h2> realtime demo with learing-based shape estimation</h2>
+
+```
+python demo_dl.py
 ```
 
 ## DetNet Training and Evaluation
