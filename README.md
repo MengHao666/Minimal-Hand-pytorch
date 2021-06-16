@@ -38,7 +38,7 @@ Offical project link:
 
 * 2021/03/24 Fixed some errors in calculating AUC. Update the 3D PCK AUC Diffenence.
 
-* 2021/06/14 A new method to estimate shape parameters by using fully connected neural network is added. Refer to [ShapeNet.md](./ShapeNet.md) for details. Thanks to kishan1823 and EEWenbinWu for pointing out the mistake. There are a little differences between the manopth I used and the official manopth. More details see [issues 11](https://github.com/MengHao666/Minimal-Hand-pytorch/issues/11). manopth/rotproj.py is the  rotproj.py which I have modified.
+* 2021/06/14 A new method to estimate shape parameters by using fully connected neural network is added. This is finished by @maitetsu as his undergraduate graduation project. Please refer to [ShapeNet.md](./ShapeNet.md) for details. Thanks to @kishan1823 and @EEWenbinWu for pointing out the mistake. There are a little differences between the manopth I used and the official manopth. More details see [issues 11](https://github.com/MengHao666/Minimal-Hand-pytorch/issues/11). manopth/rotproj.py is the  modified rotproj.py. **This could achieve much faster real-time performance!**
 
   
 ## Usage
@@ -210,6 +210,7 @@ Here come  `my_{}3D.txt` and `my_annotation.txt_3D.txt`.
   [Baidu Pan](https://pan.baidu.com/s/1Hh0ZU8p04prFVSp9bQm_IA) (`2rv7`)
 - extract it in project folder
 - **The parameters used in the real-time demo can be found [google_drive](https://drive.google.com/file/d/1fug29PBMo1Cb2DwAtX7f2E_yLHjDBmiM/view?usp=sharing) or [baidu](https://pan.baidu.com/s/1gr3xSkLuvsveSQ7nW1taSA) (un06). It is trained with loss of [Hand-BMC-pytorch](https://github.com/MengHao666/Hand-BMC-pytorch) together！！！**
+- **The training data and pre-trained model  of ShapeNet could be found in [google_drive](https://drive.google.com/file/d/1n5Eaw70Qyn1RQutzMZGyJ_WmaNE3CBjL/view?usp=sharinghttps://drive.google.com/file/d/1n5Eaw70Qyn1RQutzMZGyJ_WmaNE3CBjL/view?usp=sharing) or [baidupan](https://pan.baidu.com/s/1WmmYif2ftYl-zTDZKdy-iA) (197r). 
 
 <h2> realtime demo</h2>
 
