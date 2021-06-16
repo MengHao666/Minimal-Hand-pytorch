@@ -285,7 +285,7 @@ python plot.py --path my_results/out_loss_auc
 
 
 
-### Notev
+### Note
 
 - Adjusting training parameters carefully, longer training time, more complicated network or **[Biomechanical Constraint Losses](https://github.com/MengHao666/Hand-BMC-pytorch)**  could further boost accuracy.
 - As there is no official open source of original paper, above comparison is a little rough.
@@ -319,4 +319,4 @@ If you find the project helpful, please star this project and cite them:
 
 - @Mrsirovo for the starter code of the `utils/LM.py`, @maitetsu  update it later.
 
-- @maitetsu for the starter code of the `utils/AIK.py`
+- @maitetsu for the starter code of the `utils/AIK.py`，the implementation of PSO and deep-learing method for shape estimation. 
