@@ -210,7 +210,7 @@ Here come  `my_{}3D.txt` and `my_annotation.txt_3D.txt`.
   [Baidu Pan](https://pan.baidu.com/s/1Hh0ZU8p04prFVSp9bQm_IA) (`2rv7`)
 - extract it in project folder
 - **The parameters used in the real-time demo can be found [google_drive](https://drive.google.com/file/d/1fug29PBMo1Cb2DwAtX7f2E_yLHjDBmiM/view?usp=sharing) or [baidu](https://pan.baidu.com/s/1gr3xSkLuvsveSQ7nW1taSA) (un06). It is trained with loss of [Hand-BMC-pytorch](https://github.com/MengHao666/Hand-BMC-pytorch) together！！！**
-- **The training data and pre-trained model  of ShapeNet could be found in [google_drive](https://drive.google.com/file/d/1n5Eaw70Qyn1RQutzMZGyJ_WmaNE3CBjL/view?usp=sharinghttps://drive.google.com/file/d/1n5Eaw70Qyn1RQutzMZGyJ_WmaNE3CBjL/view?usp=sharing) or [baidupan](https://pan.baidu.com/s/1WmmYif2ftYl-zTDZKdy-iA) (197r). 
+
 
 <h2> realtime demo with PSO-based shape estimation</h2>
 
@@ -247,7 +247,7 @@ python train_detnet.py --checkpoint my_results/checkpoints  --datasets_test "do"
 python train_detnet.py --checkpoint my_results/checkpoints  --datasets_test "eo" --evaluate  --evaluate_id 101
 ```
 
-## Shape Estimation
+## Shape Estimation with LM algorithm
 
 Run the shape optimization code. This can be very time consuming when the weight parameter is quite small.
 ```
