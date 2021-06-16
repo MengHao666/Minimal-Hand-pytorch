@@ -2,7 +2,7 @@ import os
 
 import torch
 
-from utils import create_data
+import create_data
 from model import shape_net
 
 import numpy as np

@@ -38,7 +38,7 @@ Offical project link:
 
 * 2021/03/24 Fixed some errors in calculating AUC. Update the 3D PCK AUC Diffenence.
 
-* 2021/06/14 A new method to estimate shape parameters by using fully connected neural network is added. Refer to [ShapeNet.md](./ShapeNet.md) for details. Thanks to kishan1823 and EEWenbinWu for pointing out the mistake. There are a little differences between the manopth I used and the official manopth. More details see [issues 11](https://github.com/MengHao666/Minimal-Hand-pytorch/issues/11)
+* 2021/06/14 A new method to estimate shape parameters by using fully connected neural network is added. Refer to [ShapeNet.md](./ShapeNet.md) for details. Thanks to kishan1823 and EEWenbinWu for pointing out the mistake. There are a little differences between the manopth I used and the official manopth. More details see [issues 11](https://github.com/MengHao666/Minimal-Hand-pytorch/issues/11). manopth/rotproj.py is the  rotproj.py which I have modified.
 
   
 ## Usage
