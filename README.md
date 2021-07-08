@@ -324,6 +324,6 @@ If you find the project helpful, please star this project and cite them:
 
 - Code of network model was adapted from [Minimal-Hand](https://github.com/lingtengqiu/Minimal-Hand).
 
-- @Mrsirovo for the starter code of the `utils/LM.py`, @maitetsu  update it later.
+- @Mrsirovo for the starter code of the `utils/LM.py` , @maitetsu  update it later.
 
 - @maitetsu for the starter code of the `utils/AIK.py`，the implementation of PSO and deep-learing method for shape estimation. 
