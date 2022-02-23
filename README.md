@@ -273,7 +273,7 @@ python aik_pose.py --path my_results/out_testset/
 ### Detnet training and evaluation curve
 Run the following code to see my results
 ```
-python plot.py --path my_results/out_loss_auc
+python plot.py --out_path my_results/out_loss_auc
 ```
 
 (AUC means 3D PCK, and ACC_HM means 2D PCK)
