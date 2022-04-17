@@ -8,6 +8,7 @@
 you can also find in youtube or bilibili
 
 <ul>
+    <li>new demo (with texture) <a href='https://youtu.be/EBmceCmUZ9M'> youtube</a> or <a href='https://www.bilibili.com/video/BV1MZ4y1k7wx?spm_id_from=333.999.0.0'> bilibili</a> </li>
     <li>bare hand <a href='https://youtu.be/gAEyKUUwGhk'> youtube</a> or <a href='https://www.bilibili.com/video/BV1uZ4y1w7M5/'> bilibili</a> </li>
     <li>hand-object intercation <a href='https://youtu.be/XWUJEHkEMwA'> youtube</a> or <a href='https://www.bilibili.com/video/BV1mU4y1a71f/'> bilibili</a> </li>
 </ul>
