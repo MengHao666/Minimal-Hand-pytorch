@@ -160,12 +160,11 @@ def main(args):
             args=args, loss_all=loss_all
         )
         ##################################################
-        auc = best_acc
-        if epoch % 1 == 0:
-            for key, value in test_loader_dic.items():
-                auc[key], acc_hm[key] = validate(value, model, criterion, key, args=args)
-                auc_all[key].append([epoch + 1, auc[key]])
-                acc_hm_all[key].append([epoch + 1, acc_hm[key]])
+        auc = best_acc.copy() # need to deepcopy it because it's a dict
+        for key, value in test_loader_dic.items():
+            auc[key], acc_hm[key] = validate(value, model, criterion, key, args=args)
+            auc_all[key].append([epoch + 1, auc[key]])
+            acc_hm_all[key].append([epoch + 1, acc_hm[key]])
 
         misc.save_checkpoint(
             {
