@@ -28,6 +28,7 @@ Offical project link:
 
 ## Update
 ###
+* :zap:    2022/08/04    Our paper [HDR](https://menghao666.github.io/HDR/) based on this re-implementation is accepeted by ECCV 2022 !   
 * 2022/04/17  new demo video is available with [HTML hand texture](https://handtracker.mpi-inf.mpg.de/projects/HandTextureModel/), related code would be released.
 * 2021/08/22  many guys may get errors when creating environment from .yaml file, u may refer to [here](https://github.com/MengHao666/Minimal-Hand-pytorch/issues/29#issue-976328196)
 * 2021/03/09  update about `utils/LM.py`, **time cost drop from 12s/item to 1.57s/item**
