@@ -471,7 +471,7 @@ if __name__ == '__main__':
         default=319,
         type=int,
         metavar='N',
-        help='number of data loading workers (default: 8)'
+        help='evaluation id'
     )
     parser.add_argument(
         '-c', '--clean',
